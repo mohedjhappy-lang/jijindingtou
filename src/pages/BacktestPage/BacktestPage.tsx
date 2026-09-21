@@ -378,6 +378,7 @@ export default function BacktestPage() {
   const hasResult = resultA !== null && resultB !== null;
 
   return (
+    <>
     <div className="min-h-screen bg-background">
       <header className="w-full border-b border-border/30 bg-background/80 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 py-3 md:py-4 flex flex-wrap sm:flex-row items-center justify-between gap-3">
@@ -491,5 +492,6 @@ export default function BacktestPage() {
       </main>
     </div>
     <Toaster />
+    </>
   );
 }
