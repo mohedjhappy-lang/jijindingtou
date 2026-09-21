@@ -198,7 +198,7 @@ export default function HistoryPanel({
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="h-7 w-7 shrink-0 text-destructive hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="h-7 w-7 shrink-0 text-destructive hover:text-destructive"
                     onClick={(e) => {
                       e.stopPropagation();
                       if (confirm('确定要删除这条历史记录吗？')) {
