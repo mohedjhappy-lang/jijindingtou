@@ -1,7 +1,7 @@
 ﻿import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { History, Save, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
+import { toast, Toaster } from 'sonner';
 import {
   runBacktest,
   calculateBenchmark,
@@ -490,6 +490,6 @@ export default function BacktestPage() {
         </div>
       </main>
     </div>
-    <SonnerToaster />
+    <Toaster />
   );
 }
