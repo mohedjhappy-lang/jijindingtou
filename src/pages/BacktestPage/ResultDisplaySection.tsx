@@ -270,7 +270,7 @@ function CycleTable({ cycles }: { cycles: InvestmentCycle[] }) {
 
   return (
     <div className="w-full overflow-x-auto">
-      <Table className="table-fixed">
+      <Table>
         <TableHeader>
           <TableRow>
             <TableHead className="whitespace-nowrap">周期</TableHead>
@@ -1191,7 +1191,7 @@ export default function ResultDisplaySection({
 
                   {/* 数据表 */}
                   <div className="w-full overflow-x-auto rounded-md border border-border/50">
-                    <Table className="table-fixed">
+                    <Table>
                       <TableHeader>
                         <TableRow>
                           {columnOrder.map((field) => (
