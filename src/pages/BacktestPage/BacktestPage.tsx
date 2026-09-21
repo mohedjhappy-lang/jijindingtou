@@ -390,17 +390,7 @@ export default function BacktestPage() {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            {hasResult && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleSaveToHistory}
-                className="hidden sm:inline-flex"
-              >
-                <Save className="size-4 mr-1.5" />
-                保存记录
-              </Button>
-            )}
+
             <Button
               variant="outline"
               size="sm"
