@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+﻿import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { History, Save, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
@@ -348,9 +348,9 @@ export default function BacktestPage() {
   return (
     <div className="min-h-screen bg-background">
       <header className="w-full border-b border-border/30 bg-background/80 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 py-3 md:py-4 flex flex-wrap sm:flex-row items-center justify-between gap-3">
           <div>
-            <h1 className="text-xl md:text-2xl font-bold text-foreground tracking-tight">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground tracking-tight">
               基金定投策略回测对比
             </h1>
             <p className="text-xs text-muted-foreground mt-1">
@@ -393,8 +393,8 @@ export default function BacktestPage() {
         />
       )}
 
-      <main className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-6">
+      <main className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 py-4 md:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-4 md:gap-6">
           <div className="order-2 lg:order-1">
             <InputConfigSection
               navData={navData}

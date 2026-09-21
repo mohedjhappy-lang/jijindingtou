@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type ChangeEvent, type DragEvent } from 'react';
+﻿import { useState, useRef, useEffect, type ChangeEvent, type DragEvent } from 'react';
 import { Upload, FileText, AlertCircle, Plus, Trash2, Search, Loader2, Pencil, Check, X, RotateCcw } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -238,7 +238,7 @@ export default function InputConfigSection({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* 净值数据输入 */}
       <Card>
         <CardHeader>
@@ -250,7 +250,7 @@ export default function InputConfigSection({
             支持 CSV 文件上传或直接粘贴，格式：日期,净值,涨跌幅
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-3 sm:space-y-4">
           {/* 基金代码查询 */}
           <div className="space-y-2">
             <Label className="text-xs text-muted-foreground">基金代码查询</Label>
@@ -383,7 +383,7 @@ export default function InputConfigSection({
           <CardTitle className="text-base font-semibold">参数设置</CardTitle>
           <CardDescription>配置回测起止条件</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-3 sm:space-y-4">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <Label>回测区间</Label>
@@ -647,7 +647,7 @@ export default function InputConfigSection({
       <Button
         onClick={onBacktest}
         disabled={dataCount === 0 || isRunning || !startDate || !endDate}
-        className="w-full h-12 text-base"
+        className="w-full h-11 md:h-12 text-base"
       >
         {isRunning ? '回测中...' : '开始回测'}
       </Button>
@@ -759,9 +759,9 @@ function StrategyTierRow({ tier, onChange, onRemove }: StrategyTierRowProps) {
   const conditionColor = tier.conditionType === 'loss' ? 'text-destructive' : 'text-success';
 
   return (
-    <div className="flex items-start gap-2">
-      <div className="flex-1 flex flex-col gap-1.5 bg-muted/40 rounded-md px-2 py-1.5">
-        <div className="flex flex-wrap items-center gap-1.5">
+    <div className="flex items-start gap-1.5 sm:gap-2">
+      <div className="flex-1 flex flex-col gap-1.5 bg-muted/40 rounded-md p-2 sm:p-1.5">
+        <div className="flex flex-wrap items-center gap-x-1 gap-y-1.5 sm:gap-1.5">
           <Select
             value={tier.conditionType}
             onValueChange={(v) => onChange('conditionType', v as TierConditionType)}

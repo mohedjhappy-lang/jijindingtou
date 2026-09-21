@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useCallback, useEffect } from 'react';
+﻿import { useState, useMemo, useRef, useCallback, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import type { EChartsOption } from 'echarts';
 import type { ECharts } from 'echarts';
@@ -1020,10 +1020,10 @@ export default function ResultDisplaySection({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* 基金信息条 */}
       {(fundName || fundCode) && (
-        <div className="flex items-center gap-3 text-sm">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm">
           {fundName && (
             <span className="font-semibold text-foreground">{fundName}</span>
           )}
@@ -1036,7 +1036,7 @@ export default function ResultDisplaySection({
       )}
 
       {/* 策略指标对比卡 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
         <StrategyMetricCard
           title={schemeNameA}
           result={resultA}
@@ -1063,9 +1063,7 @@ export default function ResultDisplaySection({
               <Tabs
                 value={activeTab}
                 onValueChange={(v) => setActiveTab(v as typeof activeTab)}
-                className="w-auto"
-              >
-                <TabsList>
+                className="w-auto overflow-x-auto">\n                <TabsList className="min-w-max">
                   <TabsTrigger value="chart" className="text-xs h-8 px-3">
                     收益曲线
                   </TabsTrigger>
@@ -1090,7 +1088,7 @@ export default function ResultDisplaySection({
                   <p>下方为基金基准净值走势预览。调整参数后点击「开始回测」查看策略对比结果。</p>
                 </div>
               </div>
-              <div className="w-full h-[360px]">
+              <div className="w-full h-[280px] sm:h-[360px]">
                 <ReactECharts
                   ref={chartRef}
                   option={chartOption}
@@ -1100,7 +1098,7 @@ export default function ResultDisplaySection({
               </div>
             </div>
           ) : !hasResult ? (
-            <div className="h-[400px] flex flex-col items-center justify-center text-muted-foreground">
+            <div className="h-[300px] sm:h-[400px] flex flex-col items-center justify-center text-muted-foreground">
               <TrendingUp className="size-12 mb-3 opacity-20" />
               <p className="text-sm">请输入净值数据并点击开始回测</p>
               <p className="text-xs mt-1">支持 CSV 文件上传或手动粘贴</p>
@@ -1146,7 +1144,7 @@ export default function ResultDisplaySection({
                   </div>
 
                   {/* 图表 */}
-                  <div className="w-full h-[380px]">
+                  <div className="w-full h-[300px] sm:h-[380px]">
                     <ReactECharts
                       ref={chartRef}
                       option={chartOption}
@@ -1318,7 +1316,7 @@ export default function ResultDisplaySection({
 
               {activeTab === 'cycles' && (
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <h3 className="text-sm font-medium mb-2 flex items-center gap-2">
                         <span
