@@ -1,7 +1,6 @@
 ﻿import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { History, Save, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { toast } from 'sonner';
 import {
   runBacktest,
@@ -126,7 +125,6 @@ export default function BacktestPage() {
 
   const [historyList, setHistoryList] = useState<BacktestHistoryItem[]>([]);
   const [historyOpen, setHistoryOpen] = useState(false);
-  const [backtestSuccessOpen, setBacktestSuccessOpen] = useState(false);
 
   const paramsRef = useRef({
     navData, startDate, endDate, initialAmount, initialReturnRate,
@@ -395,21 +393,7 @@ export default function BacktestPage() {
         />
       )}
 
-      <Dialog open={backtestSuccessOpen} onOpenChange={setBacktestSuccessOpen}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle className="text-center text-xl">🎉 回测成功</DialogTitle>
-            <DialogDescription className="text-center text-base pt-2">
-              请上滑查看回测结果
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex justify-center pt-4">
-            <Button onClick={() => setBacktestSuccessOpen(false)} className="w-32">
-              知道了
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+
 
       <main className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 py-4 md:py-6">
         <div className="grid grid-cols-1 gap-4 md:gap-6">
