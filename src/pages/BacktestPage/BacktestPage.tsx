@@ -490,6 +490,6 @@ export default function BacktestPage() {
         </div>
       </main>
     </div>
-    <Toaster />
+    <SonnerToaster />
   );
 }
