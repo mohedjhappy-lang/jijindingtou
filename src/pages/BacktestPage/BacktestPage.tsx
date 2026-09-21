@@ -226,9 +226,9 @@ export default function BacktestPage() {
         setBenchmark(bench);
         saveParams();
         // 自动保存历史记录
-        const defaultName = ${p.fundCode ? p.fundCode + ' ' : ''}  ~ ;
+        const defaultName = `  ~ `;
         const newItem = {
-          id: hist_,
+          id: `hist_`,
           name: defaultName,
           createdAt: Date.now(),
           navData: p.navData,
