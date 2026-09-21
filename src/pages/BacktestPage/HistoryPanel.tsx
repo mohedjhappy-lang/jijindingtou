@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import { X, Trash2, Pencil, Check, Clock, FileText, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -70,9 +70,13 @@ export default function HistoryPanel({
   };
 
   return (
-    <div className="w-full border-b border-border/50 bg-card/95 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
-        <div className="flex items-center justify-between mb-3">
+    <div className="fixed inset-0 z-50 flex justify-end">
+      {/* 遮罩 */}
+      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
+      {/* 抽屉面板 */}
+      <div className="relative w-full max-w-md bg-background shadow-2xl h-full overflow-y-auto">
+        <div className="p-4 md:p-6">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Clock className="size-4 text-primary" />
             <h2 className="text-base font-semibold">历史回测记录</h2>
@@ -113,7 +117,7 @@ export default function HistoryPanel({
           />
         </div>
 
-        <div className="max-h-[320px] overflow-y-auto space-y-2 pr-1">
+        <div className="space-y-2 pr-1">
           {filtered.length === 0 ? (
             <div className="py-8 text-center text-muted-foreground text-sm">
               {list.length === 0
