@@ -395,7 +395,7 @@ export default function BacktestPage() {
 
       <main className="max-w-[1400px] mx-auto px-3 sm:px-4 md:px-6 py-4 md:py-6">
         <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-4 md:gap-6">
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1">
             <InputConfigSection
               navData={navData}
               onNavDataChange={handleNavDataChange}
@@ -436,7 +436,7 @@ export default function BacktestPage() {
             />
           </div>
 
-          <div className="order-1 lg:order-2 min-w-0">
+          <div className="order-2 lg:order-2 min-w-0">
             <ResultDisplaySection
               resultA={resultA}
               resultB={resultB}
