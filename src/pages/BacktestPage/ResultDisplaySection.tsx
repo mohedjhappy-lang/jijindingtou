@@ -704,7 +704,7 @@ export default function ResultDisplaySection({
   // 排序图标
   const SortIcon = ({ field }: { field: SortField }) => {
     if (sortField !== field) {
-      return <ArrowUpDown className="size-3 opacity-0 group-hover:opacity-100 transition-opacity" />;
+      return <ArrowUpDown className="size-3 text-muted-foreground/50" />;
     }
     if (sortOrder === 'asc') return <ChevronUp className="size-3 text-primary" />;
     return <ChevronDown className="size-3 text-primary" />;
@@ -908,7 +908,7 @@ export default function ResultDisplaySection({
     return (
       <div
         className={cn(
-          'flex items-center gap-1 group',
+          'flex items-center justify-center gap-1 group',
           config.align === 'right' && 'justify-end',
           config.align === 'center' && 'justify-center',
         )}
