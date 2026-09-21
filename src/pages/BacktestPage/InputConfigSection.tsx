@@ -380,7 +380,7 @@ export default function InputConfigSection({
       </Card>
 
       {/* 手机端插入结果展示 */}
-      <div className="lg:hidden">
+      <div>
         {insertAfterData}
       </div>
 
