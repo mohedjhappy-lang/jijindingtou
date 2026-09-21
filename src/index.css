@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "./tailwind-theme.css";
+@import "./typography.css";
+
+@source "../node_modules/lucide-react";
+@source "../node_modules/gsap/types";
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}

@@ -1,0 +1,23 @@
+/* 字体排版工具类 */
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.prose-fund {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose-fund p {
+  margin: 0.75rem 0;
+}
+
+.prose-fund strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* 数字等宽 */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
