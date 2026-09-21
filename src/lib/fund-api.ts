@@ -12,65 +12,36 @@ export interface FundHistoryResult {
 
 /**
  * 通过基金代码查询基金名称和历史净值
- * 通过动态加载 script 标签获取天天基金数据
+ * 通过后端代理请求天天基金数据，避免跨域问题
  */
 export function fetchFundHistory(code: string): Promise<FundHistoryResult> {
   return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
+    const controller = new AbortController();
     const timeout = setTimeout(() => {
-      cleanup();
+      controller.abort();
       reject(new Error('请求超时，请检查基金代码是否正确'));
     }, 15000);
 
-    function cleanup() {
-      clearTimeout(timeout);
-      if (script.parentNode) script.parentNode.removeChild(script);
-    }
-
-    script.onload = () => {
-      cleanup();
-      try {
-        const w = window as unknown as Record<string, unknown>;
-        const name = (w.fS_name as string) || '未知基金';
-        const trend = w.Data_netWorthTrend as Array<{
-          x: number;
-          y: number;
-          equityReturn: number;
-        }> | undefined;
-
-        if (!trend || !Array.isArray(trend)) {
-          reject(new Error('未获取到净值数据'));
-          return;
+    fetch(`/api/fund?code=${encodeURIComponent(code)}`, {
+      signal: controller.signal,
+    })
+      .then(async (resp) => {
+        clearTimeout(timeout);
+        if (!resp.ok) {
+          const err = await resp.json().catch(() => ({ error: '请求失败' }));
+          throw new Error(err.error || '请求失败');
         }
-
-        const data: INavData[] = trend
-          .filter((item) => item.y != null && item.x != null)
-          .map((item) => {
-            const d = new Date(item.x);
-            const year = d.getFullYear();
-            const month = String(d.getMonth() + 1).padStart(2, '0');
-            const day = String(d.getDate()).padStart(2, '0');
-            return {
-              date: `${year}-${month}-${day}`,
-              nav: Number(item.y.toFixed(4)),
-              change: Number((item.equityReturn ?? 0).toFixed(2)),
-            };
-          });
-
-        resolve({ fundName: name, fundCode: code, data });
-      } catch (e) {
-        reject(e instanceof Error ? e : new Error('数据解析失败'));
-      }
-    };
-
-    script.onerror = () => {
-      cleanup();
-      reject(new Error('网络请求失败，请检查网络连接'));
-    };
-
-    const ts = Date.now();
-    script.src = `https://fund.eastmoney.com/pingzhongdata/${code}.js?v=${ts}`;
-    document.head.appendChild(script);
+        const result = await resp.json();
+        resolve(result);
+      })
+      .catch((e) => {
+        clearTimeout(timeout);
+        if (e.name === 'AbortError') {
+          reject(new Error('请求超时，请检查基金代码是否正确'));
+        } else {
+          reject(e instanceof Error ? e : new Error('网络请求失败'));
+        }
+      });
   });
 }
 
