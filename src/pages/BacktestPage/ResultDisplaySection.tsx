@@ -1021,21 +1021,6 @@ export default function ResultDisplaySection({
     );
   };
 
-  if (mode === 'table') {
-    return (
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base font-semibold flex items-center gap-2">
-            <Activity className="size-4 text-primary" />
-            交易明细
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="pt-0">
-          {renderTableContent()}
-        </CardContent>
-      </Card>
-    );
-  }
 
   return (
     <div className="space-y-4 md:space-y-6">
@@ -1054,6 +1039,7 @@ export default function ResultDisplaySection({
       )}
 
       {/* 策略指标对比卡 */}
+      {mode !== 'table' && (
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
         <StrategyMetricCard
           title={schemeNameA}
@@ -1068,6 +1054,7 @@ export default function ResultDisplaySection({
           icon={TrendingUp}
         />
       </div>
+      )}
 
       {/* 结果展示 Tabs */}
       <Card>
@@ -1121,7 +1108,7 @@ export default function ResultDisplaySection({
             </div>
           ) : (
             <>
-              {(mode === 'chart' || (mode === 'both' && activeTab === 'chart')) && (
+              {(mode !== 'table') && (mode === 'chart' || (mode === 'both' && activeTab === 'chart')) && (
                 <div className="space-y-4">
                   {/* 策略切换 */}
                   <div className="flex items-center gap-2">
@@ -1197,7 +1184,7 @@ export default function ResultDisplaySection({
                 </div>
               )}
 
-              {mode === 'both' && activeTab === 'table' && (
+              {(mode === 'table' || (mode === 'both' && activeTab === 'table')) && (
                 <div className="space-y-3">
                   {/* 筛选工具栏 */}
                   <div className="flex items-center justify-between flex-wrap gap-2">
