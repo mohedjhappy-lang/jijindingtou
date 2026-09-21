@@ -225,7 +225,37 @@ export default function BacktestPage() {
         setResultB(resB);
         setBenchmark(bench);
         saveParams();
-        toast.success('回测完成');
+        // 自动保存历史记录
+        const defaultName = ${p.fundCode ? p.fundCode + ' ' : ''}  ~ ;
+        const newItem = {
+          id: hist_,
+          name: defaultName,
+          createdAt: Date.now(),
+          navData: p.navData,
+          startDate: p.startDate,
+          endDate: p.endDate,
+          initialAmount: p.initialAmount,
+          strategyATiers: p.strategyATiers,
+          strategyBTiers: p.strategyBTiers,
+          resultA: resA,
+          resultB: resB,
+          dataSource: p.dataSource,
+          fileName: p.fileName,
+          fundCode: p.fundCode,
+          fundName: p.fundName,
+          schemeNameA: p.schemeNameA,
+          schemeNameB: p.schemeNameB,
+          initialReturnRate: p.initialReturnRate,
+          clearThresholdA: p.clearThresholdA,
+          clearThresholdB: p.clearThresholdB,
+          clearRebuyA: p.clearRebuyA,
+          clearRebuyB: p.clearRebuyB,
+          clearRebuyModeA: p.clearRebuyModeA,
+          clearRebuyModeB: p.clearRebuyModeB,
+        };
+        const newList = saveHistory(newItem);
+        setHistoryList(newList);
+        toast.success('回测成功，请上滑查看结果');
       } catch (error) {
         const msg = error instanceof Error ? error.message : '回测失败';
         toast.error(msg);
