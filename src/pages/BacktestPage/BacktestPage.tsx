@@ -226,9 +226,11 @@ export default function BacktestPage() {
         setBenchmark(bench);
         saveParams();
         // 自动保存历史记录
-        const defaultName = `  ~ `;
+        const codePart = p.fundCode ? p.fundCode + ' ' : '';
+        const namePart = p.fundName || '基金回测';
+        const defaultName = codePart + namePart + ' ' + p.startDate + ' ~ ' + p.endDate;
         const newItem = {
-          id: `hist_`,
+          id: 'hist_' + Date.now(),
           name: defaultName,
           createdAt: Date.now(),
           navData: p.navData,
