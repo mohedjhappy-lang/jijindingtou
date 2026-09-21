@@ -1106,14 +1106,7 @@ export default function ResultDisplaySection({
                           <span className="text-primary ml-1">已筛选 {activeFilterCount} 项</span>
                         )}
                       </Badge>
-                      <Badge
-                        variant="outline"
-                        className="text-xs font-normal h-5 cursor-pointer"
-                        onClick={() => setShowFilters((v) => !v)}
-                      >
-                        <Filter className="size-3 mr-1" />
-                        {showFilters ? '隐藏筛选' : '显示筛选'}
-                      </Badge>
+
                       {activeFilterCount > 0 && (
                         <Button
                           type="button"
@@ -1140,16 +1133,7 @@ export default function ResultDisplaySection({
                           重置排序
                         </Button>
                       )}
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        className="h-6 text-xs px-2"
-                        onClick={resetColumnOrder}
-                      >
-                        <Layers className="size-3 mr-1" />
-                        重置列
-                      </Button>
+
                     </div>
                   </div>
 
