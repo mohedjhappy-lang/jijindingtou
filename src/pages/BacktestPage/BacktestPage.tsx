@@ -433,10 +433,22 @@ export default function BacktestPage() {
               fundName={fundName}
               fundCode={fundCode}
               onFundNameChange={handleFundNameChange}
+              insertAfterData={
+                <ResultDisplaySection
+                  resultA={resultA}
+                  resultB={resultB}
+                  benchmark={benchmark}
+                  previewData={previewData}
+                  schemeNameA={schemeNameA}
+                  schemeNameB={schemeNameB}
+                  fundName={fundName}
+                  fundCode={fundCode}
+                />
+              }
             />
           </div>
 
-          <div className="order-2 lg:order-2 min-w-0">
+          <div className="hidden lg:block min-w-0">
             <ResultDisplaySection
               resultA={resultA}
               resultB={resultB}

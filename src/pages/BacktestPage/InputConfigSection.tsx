@@ -68,6 +68,7 @@ interface InputConfigProps {
   fundName?: string;
   fundCode?: string;
   onFundNameChange?: (name: string, code: string) => void;
+  insertAfterData?: React.ReactNode;
 }
 
 export default function InputConfigSection({
@@ -106,6 +107,7 @@ export default function InputConfigSection({
   isRunning,
   fundCode,
   onFundNameChange,
+  insertAfterData,
 }: InputConfigProps) {
   const [csvText, setCsvText] = useState('');
   const [dragOver, setDragOver] = useState(false);
@@ -376,6 +378,11 @@ export default function InputConfigSection({
           </div>
         </CardContent>
       </Card>
+
+      {/* 手机端插入结果展示 */}
+      <div className="lg:hidden">
+        {insertAfterData}
+      </div>
 
       {/* 参数设置 */}
       <Card>
