@@ -1161,11 +1161,7 @@ export default function ResultDisplaySection({
                           {columnOrder.map((field) => (
                             <TableHead
                               key={field}
-                              className={cn(
-                                'whitespace-nowrap',
-                                COLUMN_CONFIG[field].align === 'right' && 'text-right',
-                                COLUMN_CONFIG[field].align === 'center' && 'text-center',
-                              )}
+                              className='whitespace-nowrap text-center'
                             >
                               {renderHeaderCell(field)}
                             </TableHead>
@@ -1200,10 +1196,7 @@ export default function ResultDisplaySection({
                               {columnOrder.map((field) => (
                                 <TableCell
                                   key={field}
-                                  className={cn(
-                                    COLUMN_CONFIG[field].align === 'right' && 'text-right',
-                                    COLUMN_CONFIG[field].align === 'center' && 'text-center',
-                                  )}
+                                  className='text-center'
                                 >
                                   {renderCell(record, field)}
                                 </TableCell>
