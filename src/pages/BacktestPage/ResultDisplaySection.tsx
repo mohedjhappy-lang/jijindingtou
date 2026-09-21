@@ -1063,7 +1063,8 @@ export default function ResultDisplaySection({
               <Tabs
                 value={activeTab}
                 onValueChange={(v) => setActiveTab(v as typeof activeTab)}
-                className="w-auto overflow-x-auto">\n                <TabsList className="min-w-max">
+                className="w-auto overflow-x-auto">
+                <TabsList className="min-w-max">
                   <TabsTrigger value="chart" className="text-xs h-8 px-3">
                     收益曲线
                   </TabsTrigger>
