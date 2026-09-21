@@ -1062,7 +1062,7 @@ export default function ResultDisplaySection({
           <div className="flex items-center justify-between flex-wrap gap-3">
             <CardTitle className="text-base font-semibold flex items-center gap-2">
               <Activity className="size-4 text-primary" />
-              回测结果
+              {mode === 'table' ? '交易明细' : '回测结果'}
             </CardTitle>
             {hasResult && mode === 'both' && (
               <Tabs
