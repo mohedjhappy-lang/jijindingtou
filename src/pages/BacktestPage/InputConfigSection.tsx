@@ -516,52 +516,7 @@ export default function InputConfigSection({
                 />
               ))}
             </div>
-            <div className="space-y-1.5 pt-1 border-t border-border/40">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">清仓阈值</span>
-                <div className="flex items-center gap-1">
-                  <Input
-                    type="number"
-                    min={0}
-                    step={10}
-                    value={clearThresholdA}
-                    onChange={(e) => onClearThresholdAChange(Math.max(0, Number(e.target.value) || 0))}
-                    className="h-7 text-xs px-1.5 w-16 text-center tabular-nums"
-                  />
-                  <span className="text-muted-foreground">元</span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-1 pt-0.5">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground">跌后买入</span>
-                  <Select
-                    value={clearRebuyModeA}
-                    onValueChange={(v) => onClearRebuyModeAChange(v as RebuyAmountMode)}
-                  >
-                    <SelectTrigger className="h-6 text-xs w-[104px] px-2 [&_[data-slot=select-value]]:line-clamp-none">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="min-w-[110px]">
-                      <SelectItem value="fixed">固定金额</SelectItem>
-                      <SelectItem value="totalInvested">总投入金额</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                {clearRebuyModeA === 'fixed' && (
-                  <div className="flex items-center justify-end gap-1 text-xs">
-                    <Input
-                      type="number"
-                      min={0}
-                      step={10}
-                      value={clearRebuyA}
-                      onChange={(e) => onClearRebuyAChange(Math.max(0, Number(e.target.value) || 0))}
-                      className="h-7 text-xs px-1.5 w-16 text-center tabular-nums"
-                    />
-                    <span className="text-muted-foreground">元</span>
-                  </div>
-                )}
-              </div>
-            </div>
+
           </div>
 
           {/* 方案二 */}
@@ -600,52 +555,7 @@ export default function InputConfigSection({
                 />
               ))}
             </div>
-            <div className="space-y-1.5 pt-1 border-t border-border/40">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">清仓阈值</span>
-                <div className="flex items-center gap-1">
-                  <Input
-                    type="number"
-                    min={0}
-                    step={10}
-                    value={clearThresholdB}
-                    onChange={(e) => onClearThresholdBChange(Math.max(0, Number(e.target.value) || 0))}
-                    className="h-7 text-xs px-1.5 w-16 text-center tabular-nums"
-                  />
-                  <span className="text-muted-foreground">元</span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-1 pt-0.5">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground">跌后买入</span>
-                  <Select
-                    value={clearRebuyModeB}
-                    onValueChange={(v) => onClearRebuyModeBChange(v as RebuyAmountMode)}
-                  >
-                    <SelectTrigger className="h-6 text-xs w-[104px] px-2 [&_[data-slot=select-value]]:line-clamp-none">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="min-w-[110px]">
-                      <SelectItem value="fixed">固定金额</SelectItem>
-                      <SelectItem value="totalInvested">总投入金额</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                {clearRebuyModeB === 'fixed' && (
-                  <div className="flex items-center justify-end gap-1 text-xs">
-                    <Input
-                      type="number"
-                      min={0}
-                      step={10}
-                      value={clearRebuyB}
-                      onChange={(e) => onClearRebuyBChange(Math.max(0, Number(e.target.value) || 0))}
-                      className="h-7 text-xs px-1.5 w-16 text-center tabular-nums"
-                    />
-                    <span className="text-muted-foreground">元</span>
-                  </div>
-                )}
-              </div>
-            </div>
+
           </div>
         </CardContent>
       </Card>
