@@ -66,6 +66,7 @@ interface ResultDisplayProps {
   schemeNameB?: string;
   fundName?: string;
   fundCode?: string;
+  mode?: 'chart' | 'table' | 'both';
 }
 
 const CHART_COLOR_BENCH = '#64748b';
@@ -348,6 +349,7 @@ export default function ResultDisplaySection({
   schemeNameB = '方案二',
   fundName,
   fundCode,
+  mode = 'both',
 }: ResultDisplayProps) {
   const [sortField, setSortField] = useState<SortField | null>(null);
   const [sortOrder, setSortOrder] = useState<SortOrder>(null);
@@ -1019,6 +1021,22 @@ export default function ResultDisplaySection({
     );
   };
 
+  if (mode === 'table') {
+    return (
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base font-semibold flex items-center gap-2">
+            <Activity className="size-4 text-primary" />
+            交易明细
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-0">
+          {renderTableContent()}
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <div className="space-y-4 md:space-y-6">
       {/* 基金信息条 */}
@@ -1059,7 +1077,7 @@ export default function ResultDisplaySection({
               <Activity className="size-4 text-primary" />
               回测结果
             </CardTitle>
-            {hasResult && (
+            {hasResult && mode === 'both' && (
               <Tabs
                 value={activeTab}
                 onValueChange={(v) => setActiveTab(v as typeof activeTab)}
@@ -1071,7 +1089,6 @@ export default function ResultDisplaySection({
                   <TabsTrigger value="table" className="text-xs h-8 px-3">
                     交易明细
                   </TabsTrigger>
-
                 </TabsList>
               </Tabs>
             )}
@@ -1104,7 +1121,7 @@ export default function ResultDisplaySection({
             </div>
           ) : (
             <>
-              {activeTab === 'chart' && (
+              {(mode === 'chart' || (mode === 'both' && activeTab === 'chart')) && (
                 <div className="space-y-4">
                   {/* 策略切换 */}
                   <div className="flex items-center gap-2">
@@ -1180,7 +1197,7 @@ export default function ResultDisplaySection({
                 </div>
               )}
 
-              {activeTab === 'table' && (
+              {mode === 'both' && activeTab === 'table' && (
                 <div className="space-y-3">
                   {/* 筛选工具栏 */}
                   <div className="flex items-center justify-between flex-wrap gap-2">

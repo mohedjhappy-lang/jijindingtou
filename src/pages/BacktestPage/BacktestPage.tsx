@@ -467,10 +467,26 @@ export default function BacktestPage() {
                   schemeNameB={schemeNameB}
                   fundName={fundName}
                   fundCode={fundCode}
+                  mode="chart"
                 />
               }
             />
           </div>
+          {/* 交易明细 - 独立模块，放在最下面 */}
+          {resultA && resultB && (
+            <div className="order-2 lg:order-2">
+              <ResultDisplaySection
+                resultA={resultA}
+                resultB={resultB}
+                benchmark={benchmark}
+                schemeNameA={schemeNameA}
+                schemeNameB={schemeNameB}
+                fundName={fundName}
+                fundCode={fundCode}
+                mode="table"
+              />
+            </div>
+          )}
         </div>
       </main>
     </div>
