@@ -913,15 +913,7 @@ export default function ResultDisplaySection({
           config.align === 'center' && 'justify-center',
         )}
       >
-        {config.align === 'left' && (
-          <GripVertical
-            className="size-3 text-muted-foreground/30 cursor-grab opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-            draggable
-            onDragStart={() => handleDragStart(field)}
-            onDragOver={handleDragOver}
-            onDrop={() => handleDrop(field)}
-          />
-        )}
+
         <button
           type="button"
           onClick={() => handleSort(field)}
@@ -951,15 +943,7 @@ export default function ResultDisplaySection({
             <Filter className="size-3" />
           </button>
         )}
-        {config.align === 'right' && (
-          <GripVertical
-            className="size-3 text-muted-foreground/30 cursor-grab opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-auto"
-            draggable
-            onDragStart={() => handleDragStart(field)}
-            onDragOver={handleDragOver}
-            onDrop={() => handleDrop(field)}
-          />
-        )}
+
       </div>
     );
   };
