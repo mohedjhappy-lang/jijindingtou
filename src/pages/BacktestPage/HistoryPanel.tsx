@@ -216,5 +216,6 @@ export default function HistoryPanel({
         </div>
       </div>
     </div>
+    </div>
   );
 }
