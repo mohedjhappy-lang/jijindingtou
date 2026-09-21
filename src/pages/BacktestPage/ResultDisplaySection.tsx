@@ -366,7 +366,7 @@ export default function ResultDisplaySection({
     }
     return DEFAULT_COLUMNS;
   });
-  const [activeTab, setActiveTab] = useState<'chart' | 'table' | 'cycles'>('chart');
+  const [activeTab, setActiveTab] = useState<'chart' | 'table'>('chart');
 
   const chartRef = useRef<ReactECharts>(null);
   const hasResult = resultA !== null && resultB !== null;
@@ -1070,9 +1070,7 @@ export default function ResultDisplaySection({
                   <TabsTrigger value="table" className="text-xs h-8 px-3">
                     交易明细
                   </TabsTrigger>
-                  <TabsTrigger value="cycles" className="text-xs h-8 px-3">
-                    投入周期
-                  </TabsTrigger>
+
                 </TabsList>
               </Tabs>
             )}
@@ -1314,50 +1312,6 @@ export default function ResultDisplaySection({
                 </div>
               )}
 
-              {activeTab === 'cycles' && (
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <h3 className="text-sm font-medium mb-2 flex items-center gap-2">
-                        <span
-                          className="size-2 rounded-full"
-                          style={{ backgroundColor: CHART_COLOR_A }}
-                        />
-                        {schemeNameA}
-                      </h3>
-                      <Card className="border border-border/50">
-                        <CardContent className="p-0">
-                          <CycleTable cycles={resultA?.cycles ?? []} />
-                        </CardContent>
-                      </Card>
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-medium mb-2 flex items-center gap-2">
-                        <span
-                          className="size-2 rounded-full"
-                          style={{ backgroundColor: CHART_COLOR_B }}
-                        />
-                        {schemeNameB}
-                      </h3>
-                      <Card className="border border-border/50">
-                        <CardContent className="p-0">
-                          <CycleTable cycles={resultB?.cycles ?? []} />
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
-                  <div className="pt-2 border-t border-border/40">
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <span>
-                        {schemeNameA} 清仓 {resultA?.clearCount ?? 0} 次
-                      </span>
-                      <span>
-                        {schemeNameB} 清仓 {resultB?.clearCount ?? 0} 次
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )}
             </>
           )}
         </CardContent>
