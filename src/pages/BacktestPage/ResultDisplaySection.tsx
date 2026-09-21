@@ -1110,41 +1110,6 @@ export default function ResultDisplaySection({
             <>
               {(mode !== 'table') && (mode === 'chart' || (mode === 'both' && activeTab === 'chart')) && (
                 <div className="space-y-4">
-                  {/* 策略切换 */}
-                  <div className="flex items-center gap-2">
-                    <Label className="text-xs text-muted-foreground shrink-0">显示策略</Label>
-                    <div className="flex gap-1">
-                      <Button
-                        type="button"
-                        variant={activeStrategy === 'A' ? 'default' : 'outline'}
-                        size="sm"
-                        className="h-7 text-xs px-3"
-                        style={activeStrategy === 'A' ? { backgroundColor: CHART_COLOR_A } : undefined}
-                        onClick={() => setActiveStrategy('A')}
-                      >
-                        {schemeNameA}
-                      </Button>
-                      <Button
-                        type="button"
-                        variant={activeStrategy === 'B' ? 'default' : 'outline'}
-                        size="sm"
-                        className="h-7 text-xs px-3"
-                        style={activeStrategy === 'B' ? { backgroundColor: CHART_COLOR_B } : undefined}
-                        onClick={() => setActiveStrategy('B')}
-                      >
-                        {schemeNameB}
-                      </Button>
-                      <Button
-                        type="button"
-                        variant={activeStrategy === 'both' ? 'default' : 'outline'}
-                        size="sm"
-                        className="h-7 text-xs px-3"
-                        onClick={() => setActiveStrategy('both')}
-                      >
-                        全部对比
-                      </Button>
-                    </div>
-                  </div>
 
                   {/* 图表 */}
                   <div className="w-full h-[300px] sm:h-[380px]">
@@ -1161,25 +1126,7 @@ export default function ResultDisplaySection({
                     <div className="text-xs text-muted-foreground">
                       共 {benchmark.length} 个交易日
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        className="h-7 text-xs px-2"
-                        onClick={() => {
-                          const chart = chartRef.current?.getEchartsInstance();
-                          chart?.dispatchAction({
-                            type: 'dataZoom',
-                            start: 0,
-                            end: 100,
-                          });
-                        }}
-                      >
-                        <RotateCcw className="size-3 mr-1" />
-                        重置视图
-                      </Button>
-                    </div>
+
                   </div>
                 </div>
               )}
