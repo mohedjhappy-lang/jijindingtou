@@ -922,27 +922,7 @@ export default function ResultDisplaySection({
           {config.label}
           <SortIcon field={field} />
         </button>
-        {hasFilter && (
-          <button
-            type="button"
-            onClick={() => {
-              if (isFilterActive) {
-                clearFilter(field as keyof TableFilters);
-              } else {
-                setShowFilters((v) => !v);
-              }
-            }}
-            className={cn(
-              'shrink-0',
-              isFilterActive
-                ? 'text-primary'
-                : 'text-muted-foreground/30 opacity-0 group-hover:opacity-100 hover:text-foreground transition-opacity',
-            )}
-            aria-label="筛选"
-          >
-            <Filter className="size-3" />
-          </button>
-        )}
+
 
       </div>
     );
