@@ -12,11 +12,10 @@ export interface FundHistoryResult {
 
 /**
  * 通过基金代码查询基金名称和历史净值
- * 使用 JSONP 方式请求天天基金数据
+ * 通过动态加载 script 标签获取天天基金数据
  */
 export function fetchFundHistory(code: string): Promise<FundHistoryResult> {
   return new Promise((resolve, reject) => {
-    const callbackName = `jsonp_cb_${Date.now()}_${Math.random().toString(36).slice(2)}`;
     const script = document.createElement('script');
     const timeout = setTimeout(() => {
       cleanup();
@@ -25,11 +24,10 @@ export function fetchFundHistory(code: string): Promise<FundHistoryResult> {
 
     function cleanup() {
       clearTimeout(timeout);
-      delete (window as unknown as Record<string, unknown>)[callbackName];
       if (script.parentNode) script.parentNode.removeChild(script);
     }
 
-    (window as unknown as Record<string, unknown>)[callbackName] = () => {
+    script.onload = () => {
       cleanup();
       try {
         const w = window as unknown as Record<string, unknown>;
@@ -71,7 +69,7 @@ export function fetchFundHistory(code: string): Promise<FundHistoryResult> {
     };
 
     const ts = Date.now();
-    script.src = `https://fund.eastmoney.com/pingzhongdata/${code}.js?v=${ts}&cb=${callbackName}`;
+    script.src = `https://fund.eastmoney.com/pingzhongdata/${code}.js?v=${ts}`;
     document.head.appendChild(script);
   });
 }
